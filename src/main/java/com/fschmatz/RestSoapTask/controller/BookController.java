@@ -42,7 +42,6 @@ public class BookController {
         ));
     }
 
-
     @GetMapping
     public List<Book> getAllBooks() {
         return books;
@@ -63,8 +62,4 @@ public class BookController {
         books.remove(id);
     }
 
-
-    public Book findByIdSoap(@PathVariable Integer id) {
-        return books.stream().filter(bookSoap -> bookSoap.getId() == id).findFirst().get();
-    }
 }

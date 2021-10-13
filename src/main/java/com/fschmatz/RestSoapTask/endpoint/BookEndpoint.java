@@ -12,14 +12,16 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @Endpoint
 public class BookEndpoint {
 
+    //private static final String NAMESPACE_URI = "http://localhost:8080/xml";
+
     @Autowired
     private BookController bookController;
 
-    @PayloadRoot(namespace = "http://spring.io/guides/gs-producing-web-service",localPart = "getBookRequest")
+    @PayloadRoot(localPart = "getBookRequest")
     @ResponsePayload
-    public GetBookResponse getBookRequest(@RequestPayload GetBookRequest request){
+    public GetBookResponse getBook(@RequestPayload GetBookRequest request){
         GetBookResponse response = new GetBookResponse();
-        response.setTitle(bookController.findByIdSoap(request.getId()));
+        response.setTitle(bookController.findById(request.getId()));
         return response;
     }
 }
